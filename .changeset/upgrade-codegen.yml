@@ -1,0 +1,5 @@
+---
+'@graphql-codegen/cli': patch
+---
+
+Bumped @graphql-codegen/cli to v6 to remediate a high-severity ws advisory. Updated lockfile and validated build and tests locally. No functional changes in runtime behavior expected.
