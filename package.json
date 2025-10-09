@@ -55,9 +55,6 @@
       "schemaVersion": "main"
     }
   },
-  "overrides": {
-    "ws": "8.18.3"
-  },
   "dependencies": {
     "@apollo/client": "3.4.17",
     "@dnd-kit/core": "^6.3.1",
@@ -145,7 +142,7 @@
     "@editorjs/embed": "^2.5.3",
     "@eslint/js": "^9.8.0",
     "@formatjs/cli": "^4.5.0",
-    "@graphql-codegen/cli": "^2.1.1",
+    "@graphql-codegen/cli": "^6.0.0",
     "@graphql-codegen/fragment-matcher": "^3.1.0",
     "@graphql-codegen/import-types-preset": "^2.1.12",
     "@graphql-codegen/typescript": "^2.4.3",
