@@ -1,0 +1,101 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@graphql-codegen/cli": {
+      "name": "@graphql-codegen/cli",
+      "severity": "high",
+      "isDirect": true,
+      "via": ["@graphql-tools/prisma-loader"],
+      "effects": [],
+      "range": "2.16.2-alpha-20221208004256-1c235a000 - 3.3.1",
+      "nodes": ["node_modules/@graphql-codegen/cli"],
+      "fixAvailable": true
+    },
+    "@graphql-tools/executor-graphql-ws": {
+      "name": "@graphql-tools/executor-graphql-ws",
+      "severity": "high",
+      "isDirect": false,
+      "via": ["ws"],
+      "effects": ["@graphql-tools/url-loader"],
+      "range": "<=1.0.1",
+      "nodes": ["node_modules/@graphql-tools/executor-graphql-ws"],
+      "fixAvailable": true
+    },
+    "@graphql-tools/executor-legacy-ws": {
+      "name": "@graphql-tools/executor-legacy-ws",
+      "severity": "high",
+      "isDirect": false,
+      "via": ["ws"],
+      "effects": [],
+      "range": "<=1.0.5-rc-20231209231904-e54d73f101707443b905403caac59ece59c784aa",
+      "nodes": ["node_modules/@graphql-tools/executor-legacy-ws"],
+      "fixAvailable": true
+    },
+    "@graphql-tools/prisma-loader": {
+      "name": "@graphql-tools/prisma-loader",
+      "severity": "high",
+      "isDirect": false,
+      "via": ["@graphql-tools/url-loader"],
+      "effects": ["@graphql-codegen/cli"],
+      "range": "7.2.33-alpha-20221108142800-3beb5fe2 - 8.0.0-rc-20230519104627-f6fea064",
+      "nodes": ["node_modules/@graphql-tools/prisma-loader"],
+      "fixAvailable": true
+    },
+    "@graphql-tools/url-loader": {
+      "name": "@graphql-tools/url-loader",
+      "severity": "high",
+      "isDirect": false,
+      "via": ["@graphql-tools/executor-graphql-ws", "@graphql-tools/executor-legacy-ws"],
+      "effects": ["@graphql-tools/prisma-loader"],
+      "range": "7.16.13-alpha-20221108142800-3beb5fe2 - 8.0.0-rc-20230519104627-f6fea064",
+      "nodes": ["node_modules/@graphql-tools/url-loader"],
+      "fixAvailable": true
+    },
+    "ws": {
+      "name": "ws",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1098392,
+          "name": "ws",
+          "dependency": "ws",
+          "title": "ws affected by a DoS when handling a request with many HTTP headers",
+          "url": "https://github.com/advisories/GHSA-3h5v-q93c-6h6q",
+          "severity": "high",
+          "cwe": ["CWE-476"],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=8.0.0 <8.17.1"
+        }
+      ],
+      "effects": ["@graphql-tools/executor-graphql-ws", "@graphql-tools/executor-legacy-ws"],
+      "range": "8.0.0 - 8.17.0",
+      "nodes": [
+        "node_modules/@graphql-tools/executor-graphql-ws/node_modules/ws",
+        "node_modules/@graphql-tools/executor-legacy-ws/node_modules/ws"
+      ],
+      "fixAvailable": true
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 6,
+      "critical": 0,
+      "total": 6
+    },
+    "dependencies": {
+      "prod": 587,
+      "dev": 935,
+      "optional": 414,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 1842
+    }
+  }
+}
