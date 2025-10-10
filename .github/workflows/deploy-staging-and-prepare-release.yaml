@@ -184,6 +184,7 @@ jobs:
 
   run-tests-on-release:
     needs: [prepare-release, build]
+    permissions: {}
     if: needs.prepare-release.outputs.hasChangesets == 'true'
     uses: ./.github/workflows/run-tests-on-release.yml
     with:
