@@ -14,7 +14,11 @@ import { thumbnailCellRenderer } from "./ThumbnailCell";
 
 export function useCustomCellRenderers() {
   const { locale } = useLocale();
-  const { customRenderers } = useExtraCells();
+  // useExtraCells() returns a typed object from the external package; older/newer
+  // versions may not include `customRenderers` on the type. Narrow to `any`
+  // at access time to avoid TypeScript errors while keeping a runtime guard.
+  const extra = useExtraCells();
+  const customRenderers = (extra && (extra as any).customRenderers) ?? [];
   const { themeValues } = useTheme();
   const renderers = useMemo(
     () => [
