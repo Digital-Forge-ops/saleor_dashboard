@@ -14,18 +14,22 @@ jobs:
     if: ${{ !contains( github.event.pull_request.labels.*.name, 'skip changeset') && !startsWith(github.head_ref, 'changeset-release/') }}
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repo (full)
         uses: actions/checkout@v4
         with:
-          sparse-checkout: ./.changeset
+          fetch-depth: 0
 
-      - name: Changeset file lookup
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_ID: ${{ github.event.number }}
+      - name: Changeset file lookup (git diff)
         run: |
-          files=$(gh pr diff "$PR_ID" --name-only)
-          if [[ $files =~ \.changeset\/.*.md ]]; then
+          # Fetch target branch to compare against
+          git fetch origin "${{ github.base_ref }}" --depth=1 || true
+
+          # List files changed between base and head
+          files=$(git diff --name-only "origin/${{ github.base_ref }}...HEAD")
+
+          echo "Changed files:\n$files"
+
+          if echo "$files" | grep -q '^\.changeset/'; then
             echo "Changesets found!"
           else
             echo "There is no changeset file in your pull request."
