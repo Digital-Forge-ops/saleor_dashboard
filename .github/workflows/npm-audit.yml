@@ -11,6 +11,9 @@ on:
 jobs:
   audit:
     name: npm audit
+    permissions:
+      contents: read
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
