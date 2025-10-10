@@ -18,7 +18,12 @@ const useStyles = makeStyles(
 export const PspReferenceLink = ({ href, children }: PspRerefenceLinkProps) => {
   const classes = useStyles();
 
-  if (href) {
+  // Only allow http(s) URLs for links, otherwise render children only
+  if (
+    href &&
+    typeof href === "string" &&
+    /^(https?:\/\/)/i.test(href)
+  ) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={classes.link}>
         {children}
