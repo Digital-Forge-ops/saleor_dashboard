@@ -232,6 +232,8 @@ jobs:
           BUILD_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
   merge-reports:
+    permissions:
+      contents: read
     if: "!cancelled() && contains(github.event.pull_request.labels.*.name, 'run pw-e2e')"
 
     needs: [run-tests, deploy-dashboard]
