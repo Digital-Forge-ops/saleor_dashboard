@@ -1,5 +1,7 @@
 name: Execute automation tests
 run-name: Run tests on ${{github.event.client_payload.custom_version }} ${{github.event.client_payload.project}}
+permissions:
+  contents: read
 
 on:
   repository_dispatch:
@@ -48,6 +50,8 @@ jobs:
     if: ${{ !cancelled() }}
     needs: run-tests-on-release
     runs-on: ubuntu-22.04
+    permissions:
+      pull-requests: write
     steps:
       - name: add-comment-to-release-pr
         env:
