@@ -22,7 +22,11 @@ const config = {
   roots: ["<rootDir>/src/"],
   testRegex: ".*\\.test\\.tsx?$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-  transformIgnorePatterns: ["/node_modules/(?!chroma-js/.*)"],
+  // Allow transforming certain ESM packages in node_modules (e.g. glide-data-grid and glide-data-grid-cells)
+  // Use a regex that matches node_modules but excludes the listed ESM packages so Jest will transform them.
+  transformIgnorePatterns: [
+    "node_modules/(?!@glideapps/(glide-data-grid|glide-data-grid-cells)|chroma-js)/",
+  ],
   moduleNameMapper: {
     "\\.(css)$": "identity-obj-proxy",
     "^react-intl$": "<rootDir>/__mocks__/react-intl.ts",
