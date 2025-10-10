@@ -1,4 +1,6 @@
 name: Notify Discord on Help Wanted Issue
+permissions:
+  contents: read
 
 on:
   issues:
