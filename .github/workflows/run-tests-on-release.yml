@@ -1,4 +1,6 @@
 name: Run automation tests on release
+permissions:
+  contents: read
 on:
   workflow_call:
     inputs:
