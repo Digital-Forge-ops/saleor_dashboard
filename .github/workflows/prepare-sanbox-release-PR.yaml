@@ -1,4 +1,6 @@
 name: Prepare Sandbox release pull request
+permissions:
+  contents: read
 on:
   push:
     tags:
