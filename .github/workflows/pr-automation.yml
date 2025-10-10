@@ -188,6 +188,8 @@ jobs:
 
   run-tests:
     if: ${{ contains(github.event.pull_request.labels.*.name, 'run pw-e2e') }}
+    permissions:
+      contents: read
     runs-on: ubuntu-22.04
     needs: [initialize-cloud, deploy-dashboard]
     strategy:
