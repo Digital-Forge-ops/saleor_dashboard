@@ -19,17 +19,27 @@ export const PspReferenceLink = ({ href, children }: PspRerefenceLinkProps) => {
   const classes = useStyles();
 
   // Only allow http(s) URLs for links, otherwise render children only
+  let isValidUrl = false;
   if (
     href &&
-    typeof href === "string" &&
-    /^(https?:\/\/)/i.test(href)
+    typeof href === "string"
   ) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={classes.link}>
-        {children}
-      </a>
-    );
+    try {
+      const parsedUrl = new URL(href);
+      if (parsedUrl.protocol === "http:" || parsedUrl.protocol === "https:") {
+        isValidUrl = true;
+      }
+    } catch (e) {
+      // Not a valid URL, fall through
+    }
   }
+    if (isValidUrl) {
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={classes.link}>
+          {children}
+        </a>
+      );
+    }
 
-  return <>{children}</>;
+    return <>{children}</>;
 };
