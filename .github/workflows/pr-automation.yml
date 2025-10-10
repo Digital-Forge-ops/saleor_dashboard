@@ -23,6 +23,8 @@ jobs:
   initialize-cloud:
     if: ${{ github.event_name == 'workflow_dispatch' || contains(github.event.pull_request.labels.*.name, 'test deployment') }}
     runs-on: ubuntu-22.04
+    permissions:
+      contents: read
     outputs:
       POOL_NAME: ${{ steps.cloud_variables.outputs.POOL_NAME }}
       POOL_INSTANCE: ${{ steps.cloud_variables.outputs.POOL_INSTANCE }}
